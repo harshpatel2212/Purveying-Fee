@@ -42,3 +42,24 @@ const NgoSchema = new mongoose.Schema({
 });
 const Admin = new mongoose.model("register", NgoSchema);
 module.exports = Admin;
+
+
+// const user = new Admin({
+//   ngoName:"xyz ngo",
+//   headName:"Isha",
+//   email:"hello@abc.com",
+//   contact:"3456765435",
+//   websiteLink:"http:://hello",
+//   password:"abc",
+//   confirmPassword:"abc",
+//   address:"lorem epsum...",
+//   city:"gandhinagar",
+//   state:"gujarat"
+// });
+// user.save((error, user) => {
+//   if(error)
+//   console.log(error);
+//   console.log(user)
+// });
+
+// console.log(user);
