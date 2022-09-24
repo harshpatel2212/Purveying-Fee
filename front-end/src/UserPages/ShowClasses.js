@@ -1,10 +1,5 @@
-
-import React from "react";
-const ShowClasses = () => {
-  return <div>ShowClasses</div>;
-
 import * as React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,6 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
+
 
 const ShowClasses = () => {
   const { data } = useGlobalContext();
@@ -42,13 +38,13 @@ const ShowClasses = () => {
 
   return (
     <>
-      <Grid
+     <Grid
         container
         spacing={5}
         style={{
           padding: "2rem 10rem",
         }}
-      ></Grid>
+      >
       {classes.map((classes) => (
         <Grid item xs={12}>
           <Card sx={{ maxWidth: 345 }}>
@@ -82,7 +78,8 @@ const ShowClasses = () => {
           </Card>
         </Grid>
       ))}
-    </>
+      </Grid>
+      </>
   );
 };
 
