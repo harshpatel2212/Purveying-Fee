@@ -39,7 +39,7 @@ const Login = () => {
       .then((response) => {
         if (response.success) {
           localStorage.setItem("ngo", JSON.stringify(response.data));
-          updateData({ authenticated: true, ngo: response.ngo });
+          updateData({ authenticated: true, ngo: response.data });
           navigate("/ngo-dashboard");
         } else {
           setError(response.error);
