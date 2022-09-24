@@ -1,6 +1,5 @@
 import Login from "./NgoPages/Login";
 import React, { useEffect, useState } from "react";
-import bgimage from "./images/pov.jpeg";
 import Grid from "@mui/material/Grid";
 import "./Home.css";
 import {
@@ -91,10 +90,21 @@ const Home = () => {
         <Grid item xs={12}>
           <h1>Purveying F.E.E</h1>
         </Grid>
-        <Grid item className="for-user" xs={6}>
-          <h2>Are you Looking for some Help?</h2>
+        <Grid item className="for-user" xs={6} textAlign="center">
+          <Grid item xs={12}>
+            <Typography variant="h4" textAlign="center">
+              Are you Looking for some Help?
+            </Typography>
+          </Grid>
+
           {/* State */}
-          <Grid item md={6}>
+          <Grid
+            item
+            md={8}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
             <FormControl fullWidth>
               <InputLabel id="state">State</InputLabel>
               <Select
