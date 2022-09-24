@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
 
-const ShowClassess = () => {
+const ShowClasses = () => {
   const { data } = useGlobalContext();
   const [error, setError] = useState(false);
   const [classes, setClasses] = useState([]);
