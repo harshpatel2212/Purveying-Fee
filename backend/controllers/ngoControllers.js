@@ -17,40 +17,33 @@ exports.registerfunc = async (req, res) => {
     req.body.password = securePassword;
     req.body.confirmPassword = secureconfirm;
 
-
     req.body.password = securePassword;
     req.body.confirmPassword = secureconfirm;
 
-    Ngo.create(req.body,
-      (err, ngo) => {
-        if (err) {
-          res.statusCode = 500;
-          // res.setHeader("Content-Type", "application/json");
-          return res.status(500).json({
-            data: {},
-            success: false,
-            error: "Internal server error"
-          });
-        }
-        return res.status(200).json({
-          data: ngo,
-          success: true,
-          error: ""
+    Ngo.create(req.body, (err, ngo) => {
+      if (err) {
+        return res.status(500).json({
+          data: {},
+          success: false,
+          error: "Email is already registered.",
         });
-      })
-  }
-  else {
+      }
+      return res.status(200).json({
+        data: ngo,
+        success: true,
+        error: "",
+      });
+    });
+  } else {
     return res.json({
       data: {},
       success: false,
       error: "Passwords are not same",
-    })
+    });
   }
 
   Ngo.create(req.body, (err, ngo) => {
     if (err) {
-      res.statusCode = 500;
-      // res.setHeader("Content-Type", "application/json");
       return res.status(500).json({
         data: {},
         success: false,
@@ -63,7 +56,7 @@ exports.registerfunc = async (req, res) => {
       error: "",
     });
   });
-}
+};
 
 exports.loginfunc = async (req, res) => {
   try {
@@ -84,8 +77,12 @@ exports.loginfunc = async (req, res) => {
         data: {},
       });
     }
-  } catch (e) {
-    res.status(404).send(e);
+  } catch (error) {
+    return res.status(404).send({
+      data: {},
+      success: false,
+      error: "Internal server error",
+    });
   }
 };
 

@@ -1,10 +1,11 @@
 import React from "react";
-import bgimage from "./images/pov.jpg";
+import bgimage from "./images/pov.jpeg";
 import Grid from "@mui/material/Grid";
 import "./Home.css";
-import { Divider, Link, Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
