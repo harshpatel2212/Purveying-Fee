@@ -80,6 +80,7 @@ const Home = () => {
 
     updateData(data);
     navigate("/show-outlets");
+    // navigate("/show-classes");
 
     localStorage.clear();
   };
