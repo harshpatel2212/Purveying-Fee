@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
 const EduSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -18,10 +22,6 @@ const EduSchema = new mongoose.Schema({
   endDate: {
     type: Date,
     required: false,
-  },
-  day: {
-    type: String,
-    required: true,
   },
   time: {
     type: String,
