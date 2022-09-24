@@ -23,7 +23,7 @@ const GlobalContextProvider = ({ children }) => {
   }, []);
 
   const updateData = (uData) => {
-    setUserData({
+    setData({
       ...data,
       ...uData,
     });
