@@ -62,12 +62,14 @@ exports.loginfunc = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
-    const user_email = await Ngo.findOne({ email: email });
-    const isMatch = bcrypt.compare(password, user_email.password);
+    const ngo = await Ngo.findOne({ email: email });
+    const isMatch = bcrypt.compare(password, ngo.password);
     if (isMatch) {
+      ngo.password = null;
+      ngo.confirmPassword = null;
       return res.json({
         success: true,
-        data: user_email,
+        data: ngo,
         error: "",
       });
     } else {

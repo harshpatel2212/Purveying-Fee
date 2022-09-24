@@ -112,6 +112,7 @@ const Register = () => {
             city: "Select",
             state: "Select",
           });
+          setError(false);
         } else {
           setError(response.error);
           setSuccess(false);
@@ -128,7 +129,7 @@ const Register = () => {
       }}
     >
       {/* title */}
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Typography variant="h4" textAlign="center">
           Register your NGO
         </Typography>

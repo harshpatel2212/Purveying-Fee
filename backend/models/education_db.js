@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const EduSchema = new mongoose.Schema({
   description: {
@@ -40,6 +41,14 @@ const EduSchema = new mongoose.Schema({
   },
   contactNo: {
     type: Number,
+    required: true,
+  },
+  ngoId: {
+    type: ObjectId,
+    required: true,
+  },
+  ngoName: {
+    type: String,
     required: true,
   },
 });
