@@ -1,8 +1,13 @@
+const express = require("express");
+
 const Food = require("../models/food_db");
 const Edu = require("../models/education_db");
 const Loc = require("../models/location_db");
 const Ngo = require("../models/ngo_db");
 const bcrypt = require('bcrypt');
+
+
+
 
 exports.registerfunc = async (req, res) => {
   const saltPassword = await bcrypt.genSalt(12);
@@ -21,7 +26,7 @@ exports.registerfunc = async (req, res) => {
             return res.status(500).json({
               data: {},
               success: false,
-              error: "Interal server error"
+              error: "Internal server error"
             });
           }
           return res.status(200).json({
