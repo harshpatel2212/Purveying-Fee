@@ -1,3 +1,5 @@
+const express = require("express");
+
 const Food = require("../models/food_db");
 const Edu = require("../models/education_db");
 const Loc = require("../models/location_db");
@@ -15,30 +17,53 @@ exports.registerfunc = async (req, res) => {
     req.body.password = securePassword;
     req.body.confirmPassword = secureconfirm;
 
-    Ngo.create(req.body, (err, ngo) => {
-      if (err) {
-        res.statusCode = 500;
-        // res.setHeader("Content-Type", "application/json");
-        return res.status(500).json({
-          data: {},
-          success: false,
-          error: "Interal server error",
+
+    req.body.password = securePassword;
+    req.body.confirmPassword = secureconfirm;
+
+    Ngo.create(req.body,
+      (err, ngo) => {
+        if (err) {
+          res.statusCode = 500;
+          // res.setHeader("Content-Type", "application/json");
+          return res.status(500).json({
+            data: {},
+            success: false,
+            error: "Internal server error"
+          });
+        }
+        return res.status(200).json({
+          data: ngo,
+          success: true,
+          error: ""
         });
-      }
-      return res.status(200).json({
-        data: ngo,
-        success: true,
-        error: "",
-      });
-    });
-  } else {
+      })
+  }
+  else {
     return res.json({
       data: {},
       success: false,
       error: "Passwords are not same",
-    });
+    })
   }
-};
+
+  Ngo.create(req.body, (err, ngo) => {
+    if (err) {
+      res.statusCode = 500;
+      // res.setHeader("Content-Type", "application/json");
+      return res.status(500).json({
+        data: {},
+        success: false,
+        error: "Interal server error",
+      });
+    }
+    return res.status(200).json({
+      data: ngo,
+      success: true,
+      error: "",
+    });
+  });
+}
 
 exports.loginfunc = async (req, res) => {
   try {

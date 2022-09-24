@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
-const Food = require("./models/food_db");
-const Edu = require("./models/education_db");
-const Loc = require("./models/location_db");
-const user = require("./models/ngo_db");
 const ngoRoutes = require("./routes/ngoRoutes");
 
 const app = express();
@@ -12,6 +8,7 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+
 
 mongoose
   .connect(
