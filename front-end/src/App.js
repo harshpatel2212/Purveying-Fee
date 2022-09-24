@@ -20,6 +20,7 @@ function App() {
           <Route path="/ngo-login" element={<Login />} />
 
           <Route path="/ngo-dashboard" element={<NgoDashboard />} />
+
           <Route path="/show-classes" element={<ShowClasses />} />
           <Route path="/show-outlets" element={<ShowOutlets />} />
 

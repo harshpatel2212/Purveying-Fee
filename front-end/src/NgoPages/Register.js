@@ -9,8 +9,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { server } from "../constants";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -22,19 +23,101 @@ const Register = () => {
     address: "",
     password: "",
     confirmPassword: "",
-    city: "",
-    state: "",
+    city: "Select",
+    state: "Select",
   });
 
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [locations, setLocations] = useState(false);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    fetch(server + "/get_locations", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.success) {
+          let obj = {};
+          let arr = [];
+
+          response.data.map((loc) => {
+            if (obj[loc.state]) {
+              // console.log("exists");
+            } else {
+              obj[loc.state] = 1;
+              arr.push(loc.state);
+            }
+          });
+
+          setStates(arr);
+
+          setLocations(response.data);
+        } else {
+          setError(response.error);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const updateValues = (e) => {
     const { name, value } = e.target;
 
-    setData({ ...data, [name]: value });
+    if (name === "state") {
+      let cityArr = locations.filter((loc) => loc.state === value);
+      setCities(cityArr);
+      setData({ ...data, city: "Select", [name]: value });
+    } else {
+      setData({ ...data, [name]: value });
+    }
 
     setError(null);
+  };
+
+  const registerNgo = (e) => {
+    e.preventDefault();
+
+    if (data.password !== data.confirmPassword) {
+      setError("Password and Confirm Password did not match!");
+      return;
+    }
+
+    fetch(server + "/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.success) {
+          setSuccess(true);
+          setData({
+            ngoName: "",
+            headName: "",
+            email: "",
+            contact: "",
+            websiteLink: "",
+            address: "",
+            password: "",
+            confirmPassword: "",
+            city: "Select",
+            state: "Select",
+          });
+          setError(false);
+        } else {
+          setError(response.error);
+          setSuccess(false);
+        }
+      });
   };
 
   return (
@@ -46,7 +129,7 @@ const Register = () => {
       }}
     >
       {/* title */}
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Typography variant="h4" textAlign="center">
           Register your NGO
         </Typography>
@@ -152,9 +235,12 @@ const Register = () => {
             name="state"
             onChange={updateValues}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={"Select"}>Select</MenuItem>
+            {states.map((state) => (
+              <MenuItem key={state} value={state}>
+                {state}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Grid>
@@ -170,9 +256,12 @@ const Register = () => {
             name="city"
             onChange={updateValues}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={"Select"}>Select</MenuItem>
+            {cities.map((city) => (
+              <MenuItem key={city.city} value={city.city}>
+                {city.city}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Grid>
@@ -205,7 +294,9 @@ const Register = () => {
 
       {/* submit button */}
       <Grid item md={12} textAlign="center">
-        <Button variant="contained">Register NGO</Button>
+        <Button variant="contained" onClick={registerNgo}>
+          Register NGO
+        </Button>
       </Grid>
     </Grid>
   );

@@ -1,8 +1,13 @@
 import { Alert, Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { server } from "../constants";
+import { useGlobalContext } from "../context/GlobalContext";
 
 const Login = () => {
+  const { updateData } = useGlobalContext();
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -17,6 +22,30 @@ const Login = () => {
     setData({ ...data, [name]: value });
 
     setError(null);
+  };
+
+  const login = (e) => {
+    e.preventDefault();
+
+    fetch(server + "/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.success) {
+          localStorage.setItem("ngo", JSON.stringify(response.data));
+          updateData({ authenticated: true, ngo: response.ngo });
+          navigate("/ngo-dashboard");
+        } else {
+          setError(response.error);
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -78,7 +107,9 @@ const Login = () => {
 
       {/* submit button */}
       <Grid item md={12} textAlign="center">
-        <Button variant="contained" fullWidth>Sign In</Button>
+        <Button variant="contained" onClick={login} fullWidth>
+          Login
+        </Button>
       </Grid>
     </Grid>
   );

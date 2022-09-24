@@ -4,6 +4,7 @@ const GlobalContext = createContext();
 
 const GlobalContextProvider = ({ children }) => {
   const [data, setData] = useState({
+    authenticated: false,
     city: "",
     state: "",
     ngo: {},
@@ -17,6 +18,7 @@ const GlobalContextProvider = ({ children }) => {
 
       setData({
         ...data,
+        authenticated: true,
         ngo: ngo,
       });
     }

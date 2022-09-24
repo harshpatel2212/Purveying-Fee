@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const FoodSchema = new mongoose.Schema({
   nameDish: {
@@ -27,6 +28,14 @@ const FoodSchema = new mongoose.Schema({
   },
   contactNo: {
     type: Number,
+    required: true,
+  },
+  ngoId: {
+    type: ObjectId,
+    required: true,
+  },
+  ngoName: {
+    type: String,
     required: true,
   },
 });
