@@ -7,11 +7,13 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
+import pov from "../images/pov.jpeg";
 
 const ShowOutlets = () => {
   const { data } = useGlobalContext();
   const [error, setError] = useState(false);
   const [outlets, setOutlets] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     console.log(data);
@@ -28,6 +30,7 @@ const ShowOutlets = () => {
           console.log(response.data);
           setOutlets(response.data);
           setError(false);
+          setLoading(false);
         } else {
           setError(response.error);
         }
@@ -43,31 +46,51 @@ const ShowOutlets = () => {
         style={{
           padding: "2rem 10rem",
         }}
-      ></Grid>
-      {outlets.map((outlet) => (
+      >
+        {/* title */}
         <Grid item xs={12}>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardHeader title={outlet.nameDish} subheader={outlet.dishPrice} />
-            <CardMedia
-              component="img"
-              height="194"
-              image="images/pov.jpeg"
-              alt="Paella dish"
-            />
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                {outlet.ngoName}, {outlet.address}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {outlet.contactNo}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {outlet.description}
-              </Typography>
-            </CardContent>
-          </Card>
+          <Typography variant="h4" textAlign="center">
+            Food Outlets near you
+          </Typography>
         </Grid>
-      ))}
+
+        {loading && (
+          <Grid item xs={12}>
+            <Typography variant="h5" textAlign="center">
+              Loading...
+            </Typography>
+          </Grid>
+        )}
+
+        {/* outlets */}
+        {outlets.map((outlet) => (
+          <Grid item md={4}>
+            <Card variant="outlined" sx={{ maxWidth: 345 }}>
+              <CardMedia
+                component="img"
+                height="194"
+                image={pov}
+                alt="Paella dish"
+              />
+              <CardHeader
+                title={outlet.nameDish}
+                subheader={"Price:" + outlet.dishPrice}
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary" mb={1}>
+                  Address: {outlet.ngoName}, {outlet.address}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" mb={1}>
+                  Contact: {outlet.contactNo}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" mb={1}>
+                  About: {outlet.description}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 };

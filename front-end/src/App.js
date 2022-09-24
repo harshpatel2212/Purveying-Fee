@@ -17,7 +17,6 @@ function App() {
           <Route path="/" element={<Home />} />
 
           <Route path="/ngo-register" element={<Register />} />
-          <Route path="/ngo-login" element={<Login />} />
 
           <Route path="/ngo-dashboard" element={<NgoDashboard />} />
 

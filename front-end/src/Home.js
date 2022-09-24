@@ -10,6 +10,7 @@ import {
   Select,
   Typography,
   Button,
+  Alert,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { server } from "./constants";
@@ -42,13 +43,12 @@ const Home = () => {
           let obj = {};
           let arr = [];
 
-          response.data.map((loc) => {
-            if (obj[loc.state]) {
-              // console.log("exists");
-            } else {
+          response.data.filter((loc) => {
+            if (!obj[loc.state]) {
               obj[loc.state] = 1;
               arr.push(loc.state);
             }
+            return loc.state;
           });
 
           setStates(arr);
@@ -79,10 +79,12 @@ const Home = () => {
     e.preventDefault();
 
     updateData(data);
+    localStorage.setItem("state", data.state);
+    localStorage.setItem("city", data.city);
     navigate("/show-outlets");
     // navigate("/show-classes");
 
-    localStorage.clear();
+    // localStorage.clear();
   };
 
   return (
@@ -99,6 +101,13 @@ const Home = () => {
             <Grid item md={12}>
               <h2>Are you Looking for some Help?</h2>
             </Grid>
+
+            {/* error alert */}
+            {error && (
+              <Grid item md={12}>
+                <Alert severity="error">{error}</Alert>
+              </Grid>
+            )}
 
             {/* State */}
             <Grid item md={12} m="1rem 5rem">

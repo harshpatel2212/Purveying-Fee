@@ -47,13 +47,12 @@ const Register = () => {
           let obj = {};
           let arr = [];
 
-          response.data.map((loc) => {
-            if (obj[loc.state]) {
-              // console.log("exists");
-            } else {
+          response.data.filter((loc) => {
+            if (!obj[loc.state]) {
               obj[loc.state] = 1;
               arr.push(loc.state);
             }
+            return loc.state;
           });
 
           setStates(arr);
@@ -139,8 +138,7 @@ const Register = () => {
       {success && (
         <Grid item md={12}>
           <Alert severity="success">
-            NGO registered successfully. Move to{" "}
-            <Link to="/ngo-login"> Login</Link>
+            NGO registered successfully. Move to <Link to="/"> Login</Link>
           </Alert>
         </Grid>
       )}
