@@ -5,7 +5,6 @@ const Food = require("./models/food_db");
 const Edu = require("./models/education_db");
 const Loc = require("./models/location_db");
 const user = require("./models/ngo_db");
-
 const ngoRoutes = require("./routes/ngoRoutes");
 
 const app = express();
