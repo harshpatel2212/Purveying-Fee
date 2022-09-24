@@ -1,6 +1,5 @@
 import Login from "./NgoPages/Login";
 import React, { useEffect, useState } from "react";
-import bgimage from "./images/pov.jpeg";
 import Grid from "@mui/material/Grid";
 import "./Home.css";
 import {
@@ -88,71 +87,81 @@ const Home = () => {
 
   return (
     <>
-      <Grid container spacing={2} className="main-container">
+      <Grid container textAlign="center">
+        {/* Heading title */}
         <Grid item xs={12}>
           <h1>Purveying F.E.E</h1>
         </Grid>
-        <Grid item className="for-user" xs={6}>
-          <h2>Are you Looking for some Help?</h2>
-          {/* State */}
-          <Grid item md={6}>
-            <FormControl fullWidth>
-              <InputLabel id="state">State</InputLabel>
-              <Select
-                labelId="state"
-                value={data.state}
-                label="State"
-                name="state"
-                onChange={updateValues}
-              >
-                <MenuItem value={"Select"}>Select</MenuItem>
-                {states.map((state) => (
-                  <MenuItem key={state} value={state}>
-                    {state}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
 
-          {/* city */}
-          <Grid item md={6}>
-            <FormControl fullWidth>
-              <InputLabel id="city">City</InputLabel>
-              <Select
-                labelId="city"
-                value={data.city}
-                label="City"
-                name="city"
-                onChange={updateValues}
-              >
-                <MenuItem value={"Select"}>Select</MenuItem>
-                {cities.map((city) => (
-                  <MenuItem key={city.city} value={city.city}>
-                    {city.city}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
+        {/* user side */}
+        <Grid item xs={6}>
+          <Grid container spacing={2} className="user-container">
+            <Grid item md={12}>
+              <h2>Are you Looking for some Help?</h2>
+            </Grid>
 
-          <Grid item md={6}>
-            <Button variant="contained" onClick={go}>
-              Go
-            </Button>
+            {/* State */}
+            <Grid item md={12} m="1rem 5rem">
+              <FormControl fullWidth>
+                <InputLabel id="state">State</InputLabel>
+                <Select
+                  labelId="state"
+                  value={data.state}
+                  label="State"
+                  name="state"
+                  onChange={updateValues}
+                >
+                  <MenuItem value={"Select"}>Select</MenuItem>
+                  {states.map((state) => (
+                    <MenuItem key={state} value={state}>
+                      {state}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+
+            {/* city */}
+            <Grid item md={12} m="1rem 5rem">
+              <FormControl fullWidth>
+                <InputLabel id="city">City</InputLabel>
+                <Select
+                  labelId="city"
+                  value={data.city}
+                  label="City"
+                  name="city"
+                  onChange={updateValues}
+                >
+                  <MenuItem value={"Select"}>Select</MenuItem>
+                  {cities.map((city) => (
+                    <MenuItem key={city.city} value={city.city}>
+                      {city.city}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+
+            {/* button */}
+            <Grid item md={6} textAlign="center" m={0}>
+              <Button variant="contained" onClick={go}>
+                Go
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
+
+        {/* NGO Side */}
         <Divider orientation="vertical" flexItem variant="middle" />
-        <Grid item className="for-ngo" xs>
-          <Grid container spacing={2} className="ngo-container">
+        <Grid item xs>
+          <Grid container spacing={2}>
             <Grid item md={12}>
               <h2>Are you a NGO?</h2>
             </Grid>
             <Login />
             <Grid item md={12}>
               <Typography variant="p">
-                Don't have an Account?
-                <Link>Register</Link>
+                Don't have an Account? <Link to="/ngo-register">Register</Link>
               </Typography>
             </Grid>
           </Grid>
