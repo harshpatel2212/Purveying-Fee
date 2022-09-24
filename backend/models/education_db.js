@@ -47,16 +47,16 @@ const EduSchema = new mongoose.Schema({
 const Edu = mongoose.model("Edu", EduSchema);
 
 // const e = new Edu({
-//   description: "Intro to Data Visualization",
-//   tagField: "Data Science",
-//   startDate: "2022-09-25",
+//   description: "Intro to ReactJS",
+//   tagField: "Web Development",
+//   startDate: "2022-09-26",
 //   endDate: "2022-10-25",
-//   day: "Monday",
+//   day: "Tuesday",
 //   time: "14:00 - 16:00",
 //   address: "xyz/1, Abc Road",
-//   city: "Gandhinagar",
+//   city: "Ahmedabad",
 //   state: "Gujarat",
-//   contactNo: 9999999990,
+//   contactNo: 9999999991,
 // });
 
 // e.save((error, edu) => {
