@@ -1,5 +1,6 @@
 import React from "react";
-import bgimage from "./images/pov.jpg";
+import Login from "./NgoPages/Login";
+import bgimage from "./images/pov.jpeg";
 import Grid from "@mui/material/Grid";
 import "./Home.css";
 import { Divider, Link, Typography } from "@mui/material";
@@ -37,20 +38,14 @@ const Home = () => {
         <Divider orientation="vertical" flexItem variant="middle" />
         <Grid item className="for-ngo" xs>
           <Grid container spacing={2} className="ngo-container">
-            <Grid item xs={12}>
+            <Grid item md={12}>
               <h2>Are you a NGO?</h2>
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h4" xs={6}>
-                <Link to="/ngo-register">Register Here!</Link>
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="p">Already have an account?</Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h4">
-                <Link to="ngo-login">Sign In</Link>
+            <Login />
+            <Grid item md={12}>
+              <Typography variant="p">
+                Don't have an Account?
+                <Link>Register</Link>
               </Typography>
             </Grid>
           </Grid>

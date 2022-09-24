@@ -1,9 +1,5 @@
 html {
-  background: url(images/pov.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  /* background: url(images/pov.jpeg) no-repeat center center/cover fixed; */
   box-sizing: border-box;
 }
 body {
@@ -18,12 +14,13 @@ body {
   /* From https://css.glass */
   /* margin : 2em 10em; */
   /* padding: 2rem 10rem; */
-  background: rgba(242, 229, 229, 0.19);
+  /* background: rgba(242, 229, 229, 0.19);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.5px);
   -webkit-backdrop-filter: blur(4.5px);
-  border: 1px solid rgba(242, 229, 229, 0.02);
+  border: 1px solid rgba(242, 229, 229, 0.02); */
+  text-align: center;
 }
 
 .user-container {
@@ -32,6 +29,11 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 2rem 5rem;
+}
+.ngo-container{
+  display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .input-fields {
   margin: 2rem;

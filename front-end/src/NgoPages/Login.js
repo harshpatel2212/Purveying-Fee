@@ -29,7 +29,7 @@ const Login = () => {
     >
       {/* title */}
       <Grid item md={12}>
-        <Typography variant="h4" textAlign="center">
+        <Typography variant="h6" textAlign="center">
           Login as a NGO
         </Typography>
       </Grid>
@@ -78,7 +78,7 @@ const Login = () => {
 
       {/* submit button */}
       <Grid item md={12} textAlign="center">
-        <Button variant="contained">Register NGO</Button>
+        <Button variant="contained" fullWidth>Sign In</Button>
       </Grid>
     </Grid>
   );
