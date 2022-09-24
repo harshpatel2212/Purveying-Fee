@@ -12,7 +12,7 @@ const locSchema = new mongoose.Schema({
   },
 });
 
-const loc = new mongoose.model("Location", locSchema);
+const loc = mongoose.model("Location", locSchema);
 
 // data.forEach((element) => {
 //   const l = new loc({
