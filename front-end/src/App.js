@@ -1,11 +1,11 @@
-import { Login } from "@mui/icons-material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalContextProvider } from "./context/GlobalContext";
 import Home from "./Home";
+import Register from "./NgoPages/Register";
+import Login from "./NgoPages/Login";
+import NgoDashboard from "./NgoPages/NgoDashboard";
 import CreateClass from "./NgoPages/CreateClass";
 import CreateOutlet from "./NgoPages/CreateOutlet";
-import NgoDashboard from "./NgoPages/NgoDashboard";
-import Register from "./NgoPages/Register";
 import ShowClasses from "./UserPages/ShowClasses";
 import ShowOutlets from "./UserPages/ShowOutlets";
 

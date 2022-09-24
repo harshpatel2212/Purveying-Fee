@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const data = require("./cities_india.json");
+// const data = require("./cities_india.json");
 
 const locSchema = new mongoose.Schema({
   city: {

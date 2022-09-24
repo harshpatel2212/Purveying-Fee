@@ -1,14 +1,10 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
-<<<<<<< HEAD
 const Food = require("./models/food_db");
 const Edu = require("./models/education_db");
 const Loc = require("./models/location_db");
-=======
-const user = require('./models/ngo_db');
-console.log(user);
->>>>>>> 6bfac165370f27905c8082479a282c8dbd72c1ef
+const user = require("./models/ngo_db");
 
 const ngoRoutes = require("./routes/ngoRoutes");
 
@@ -34,5 +30,3 @@ app.use("/api", ngoRoutes);
 app.listen(port, () => {
   console.log("Server is running at port", port);
 });
-
-
