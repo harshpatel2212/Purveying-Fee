@@ -1,9 +1,18 @@
 const express = require("express");
-const { func } = require("../controllers/temp");
-const { registerfunc,loginfunc } = require("../controllers/temp");
+const {
+  createClass,
+  createOutlet,
+  searchClass,
+  searchOutlet,
+  registerfunc,
+  loginfunc,
+} = require("../controllers/ngoControllers");
 const router = express.Router();
 
-router.get("/", func);
-router.post("/signup",registerfunc);
-router.post("/login",loginfunc);
+router.post("/create_class", createClass);
+router.post("/create_outlet", createOutlet);
+// router.get("/search_classes", searchClass);
+// router.get("/search_outlet", searchOutlet);
+router.post("/signup", registerfunc);
+router.post("/login", loginfunc);
 module.exports = router;

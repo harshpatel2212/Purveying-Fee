@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/models/cities_india.json
 
 # testing
 /coverage
