@@ -40,5 +40,5 @@ const EduSchema = new mongoose.Schema({
   },
 });
 
-const admin = new mongoose.model("register", EduSchema);
-module.exports = admin;
+const Edu = new mongoose.model("register", EduSchema);
+module.exports = Edu;

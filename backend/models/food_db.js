@@ -31,5 +31,5 @@ const FoodSchema = new mongoose.Schema({
   },
 });
 
-const admin = new mongoose.model("register", FoodSchema);
-module.exports = admin;
+const Food = new mongoose.model("register", FoodSchema);
+module.exports = Food;
