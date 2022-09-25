@@ -83,10 +83,10 @@ const ShowClasses = () => {
                   Contact Info: {classes.contactNo}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Start Date: {classes.startDate}
+                  Start Date: {classes.startDate.split("T")[0]}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  End Date: {classes.endDate}
+                  End Date: {classes.endDate.split("T")[0]}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Time: {classes.time}
