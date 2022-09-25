@@ -1,5 +1,3 @@
-const express = require("express");
-
 const Food = require("../models/food_db");
 const Edu = require("../models/education_db");
 const Loc = require("../models/location_db");
@@ -13,10 +11,8 @@ exports.registerfunc = async (req, res) => {
     req.body.confirmPassword,
     saltPassword
   );
-  if (securePassword === secureconfirm) {
-    req.body.password = securePassword;
-    req.body.confirmPassword = secureconfirm;
 
+  if (securePassword === secureconfirm) {
     req.body.password = securePassword;
     req.body.confirmPassword = secureconfirm;
 
@@ -74,10 +70,10 @@ exports.loginfunc = async (req, res) => {
 };
 
 exports.createClass = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   Edu.create(req.body, function (err, data) {
     if (err) {
-      // console.log(err);
+      console.log(err);
       return res.json({
         data: {},
         success: false,
@@ -94,7 +90,7 @@ exports.createClass = (req, res) => {
 };
 
 exports.createOutlet = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   Food.create(req.body, function (err, data) {
     if (err) {
       // console.log(err);
@@ -114,14 +110,14 @@ exports.createOutlet = (req, res) => {
 };
 
 exports.searchClass = (req, res) => {
-  console.log(req.query);
+  // console.log(req.query);
 
   const queryObj = { ...req.query };
   const excludeFields = ["page", "sort", "limit", "fields"];
   excludeFields.forEach((eF) => delete queryObj[eF]);
   Edu.find(queryObj).exec((err, data) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
       return res.json({
         data: {},
         success: false,
@@ -157,14 +153,14 @@ exports.searchLocations = (req, res) => {
 };
 
 exports.searchOutlet = (req, res) => {
-  console.log(req.query);
+  // console.log(req.query);
 
   const queryObj = { ...req.query };
   const excludeFields = ["page", "sort", "limit", "fields"];
   excludeFields.forEach((eF) => delete queryObj[eF]);
   Food.find(queryObj).exec((err, data) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
       return res.json({
         data: {},
         success: false,

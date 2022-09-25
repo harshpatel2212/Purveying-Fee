@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
-import pov from "../images/thali.png";
+import thali from "../images/thali.png";
 import { useNavigate } from "react-router-dom";
 
 const ShowOutlets = () => {
@@ -76,7 +76,7 @@ const ShowOutlets = () => {
               <CardMedia
                 component="img"
                 height="194"
-                image={pov}
+                image={thali}
                 alt="Paella dish"
               />
               <CardHeader

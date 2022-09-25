@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
-import pov from "../images/courses.png";
+import courses from "../images/courses.png";
 import { useNavigate } from "react-router-dom";
 
 const ShowClasses = () => {
@@ -75,7 +75,7 @@ const ShowClasses = () => {
               <CardMedia
                 component="img"
                 height="194"
-                image={pov}
+                image={courses}
                 alt="Paella dish"
               />
               <CardContent>
@@ -86,10 +86,10 @@ const ShowClasses = () => {
                   Contact Info: {c.contactNo}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Start Date: {c.startDate}
+                  Start Date: {c.startDate.split("T")[0]}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  End Date: {c.endDate}
+                  End Date: {c.endDate.split("T")[0]}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Time: {c.time}
