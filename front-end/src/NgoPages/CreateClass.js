@@ -158,7 +158,7 @@ const CreateClass = () => {
       <Grid item md={6}>
         <TextField
           fullWidth
-          label="Name of Classes"
+          label="Class Title"
           variant="outlined"
           name="name"
           value={data.name}
