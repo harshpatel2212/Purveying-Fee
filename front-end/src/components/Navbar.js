@@ -48,19 +48,31 @@ const Navbar = () => {
               <>
                 <Link
                   to="/ngo-dashboard"
-                  style={{ color: "#fff", marginRight: "1rem" }}
+                  style={{
+                    color: "#fff",
+                    marginRight: "1rem",
+                    textDecoration: "none",
+                  }}
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/create-class"
-                  style={{ color: "#fff", marginRight: "1rem" }}
+                  style={{
+                    color: "#fff",
+                    marginRight: "1rem",
+                    textDecoration: "none",
+                  }}
                 >
                   Add Classes
                 </Link>
                 <Link
                   to="/create-outlet"
-                  style={{ color: "#fff", marginRight: "1rem" }}
+                  style={{
+                    color: "#fff",
+                    marginRight: "1rem",
+                    textDecoration: "none",
+                  }}
                 >
                   Add Food Outlet
                 </Link>
@@ -70,13 +82,21 @@ const Navbar = () => {
               <>
                 <Link
                   to="/show-classes"
-                  style={{ color: "#fff", marginRight: "1rem" }}
+                  style={{
+                    color: "#fff",
+                    marginRight: "1rem",
+                    textDecoration: "none",
+                  }}
                 >
                   Classes
                 </Link>
                 <Link
                   to="/show-outlets"
-                  style={{ color: "#fff", marginRight: "1rem" }}
+                  style={{
+                    color: "#fff",
+                    marginRight: "1rem",
+                    textDecoration: "none",
+                  }}
                 >
                   Food Outlet
                 </Link>

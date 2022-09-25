@@ -57,7 +57,7 @@ const Login = () => {
       }}
     >
       {/* title */}
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <Typography variant="h6" textAlign="center">
           Login as a NGO
         </Typography>
@@ -65,7 +65,7 @@ const Login = () => {
 
       {/* success alert  */}
       {success && (
-        <Grid item md={12}>
+        <Grid item xs={12}>
           <Alert severity="success">
             NGO registered successfully. Move to{" "}
             <Link to="/ngo-login"> Login</Link>
@@ -75,13 +75,13 @@ const Login = () => {
 
       {/* error alert */}
       {error && (
-        <Grid item md={12}>
+        <Grid item xs={12}>
           <Alert severity="error">{error}</Alert>
         </Grid>
       )}
 
       {/* email */}
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <TextField
           fullWidth
           label="Email of NGO"
@@ -93,7 +93,7 @@ const Login = () => {
       </Grid>
 
       {/* password */}
-      <Grid item md={12}>
+      <Grid item xs={12}>
         <TextField
           fullWidth
           type="password"
@@ -106,7 +106,7 @@ const Login = () => {
       </Grid>
 
       {/* submit button */}
-      <Grid item md={12} textAlign="center">
+      <Grid item xs ={12} textAlign="center">
         <Button variant="contained" onClick={login} fullWidth>
           Login
         </Button>

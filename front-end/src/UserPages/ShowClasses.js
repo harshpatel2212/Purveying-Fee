@@ -69,7 +69,7 @@ const ShowClasses = () => {
         )}
 
         {classes.map((c) => (
-          <Grid key={c} item xs={12}>
+          <Grid key={c} item xs={4}>
             <Card variant="outlined" sx={{ maxWidth: 345 }}>
               <CardHeader title={c.description} subheader={c.tagField} />
               <CardMedia
