@@ -18,6 +18,7 @@ const ShowOutlets = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log(ngoData)
     if (Object.keys(ngoData.ngo) > 0) {
       navigate("/ngo-dashboard");
     }
@@ -50,13 +51,13 @@ const ShowOutlets = () => {
       <Grid
         container
         spacing={5}
-        style={{
-          padding: "2rem 10rem",
+        sx={{
+          padding: {md: "2rem 10rem", xs: "1rem 3rem"}
         }}
       >
         {/* title */}
         <Grid item xs={12}>
-          <Typography variant="h4" textAlign="center">
+          <Typography variant="h5" textAlign="center">
             Food Outlets near you
           </Typography>
         </Grid>
@@ -71,11 +72,12 @@ const ShowOutlets = () => {
 
         {/* outlets */}
         {outlets.map((outlet) => (
-          <Grid key={outlet._id} item md={4}>
+          <Grid key={outlet._id} item xs={12} md={4}>
             <Card variant="outlined" sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
-                height="194"
+                height="180rem"
+                width="180rem"
                 image={thali}
                 alt="Paella dish"
               />

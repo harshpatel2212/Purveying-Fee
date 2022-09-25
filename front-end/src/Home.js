@@ -15,6 +15,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { server } from "./constants";
 import { useGlobalContext } from "./context/GlobalContext";
+// import pov from "./images/pov.jpeg";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -98,25 +99,26 @@ const Home = () => {
       <Grid container textAlign="center">
         {/* Heading title */}
         <Grid item xs={12}>
+          {/* <img src={pov} alt="Purveying F.E.E"></img> */}
           <h1>Purveying F.E.E</h1>
         </Grid>
 
         {/* user side */}
-        <Grid item xs={6}>
+        <Grid item md={6} xs={12}>
           <Grid container spacing={2} className="user-container">
-            <Grid item md={12}>
+            <Grid item xs={12}>
               <h2>Are you Looking for some Help?</h2>
             </Grid>
 
             {/* error alert */}
             {error && (
-              <Grid item md={12}>
+              <Grid item xs={12}>
                 <Alert severity="error">{error}</Alert>
               </Grid>
             )}
 
             {/* State */}
-            <Grid item md={12} m="1rem 5rem">
+            <Grid item xs={12} m="1rem 5rem">
               <FormControl fullWidth>
                 <InputLabel id="state">State</InputLabel>
                 <Select
@@ -137,7 +139,7 @@ const Home = () => {
             </Grid>
 
             {/* city */}
-            <Grid item md={12} m="1rem 5rem">
+            <Grid item xs={12} m="1rem 5rem">
               <FormControl fullWidth>
                 <InputLabel id="city">City</InputLabel>
                 <Select
@@ -158,7 +160,7 @@ const Home = () => {
             </Grid>
 
             {/* button */}
-            <Grid item md={6} textAlign="center" m={0}>
+            <Grid item xs={6} textAlign="center" m={0}>
               <Button variant="contained" onClick={go}>
                 Go
               </Button>
@@ -170,11 +172,11 @@ const Home = () => {
         <Divider orientation="vertical" flexItem variant="middle" />
         <Grid item xs>
           <Grid container spacing={2}>
-            <Grid item md={12}>
+            <Grid item xs={12}>
               <h2>Are you a NGO?</h2>
             </Grid>
             <Login />
-            <Grid item md={12}>
+            <Grid item xs={12}>
               <Typography variant="p">
                 Don't have an Account? <Link to="/ngo-register">Register</Link>
               </Typography>
