@@ -64,7 +64,7 @@ const ShowOutlets = () => {
 
         {/* outlets */}
         {outlets.map((outlet) => (
-          <Grid item md={4}>
+          <Grid key={outlet._id} item md={4}>
             <Card variant="outlined" sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"

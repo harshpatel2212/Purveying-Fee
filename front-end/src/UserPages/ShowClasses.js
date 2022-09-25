@@ -62,13 +62,10 @@ const ShowClasses = () => {
           </Grid>
         )}
 
-        {classes.map((classes) => (
-          <Grid item xs={12}>
+        {classes.map((c) => (
+          <Grid key={c} item xs={12}>
             <Card variant="outlined" sx={{ maxWidth: 345 }}>
-              <CardHeader
-                title={classes.description}
-                subheader={classes.tagField}
-              />
+              <CardHeader title={c.description} subheader={c.tagField} />
               <CardMedia
                 component="img"
                 height="194"
@@ -77,19 +74,19 @@ const ShowClasses = () => {
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                  {classes.ngoName}, {classes.address}
+                  {c.ngoName}, {c.address}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Contact Info: {classes.contactNo}
+                  Contact Info: {c.contactNo}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Start Date: {classes.startDate}
+                  Start Date: {c.startDate}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  End Date: {classes.endDate}
+                  End Date: {c.endDate}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Time: {classes.time}
+                  Time: {c.time}
                 </Typography>
               </CardContent>
             </Card>

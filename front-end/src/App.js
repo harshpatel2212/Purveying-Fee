@@ -8,11 +8,13 @@ import CreateClass from "./NgoPages/CreateClass";
 import CreateOutlet from "./NgoPages/CreateOutlet";
 import ShowClasses from "./UserPages/ShowClasses";
 import ShowOutlets from "./UserPages/ShowOutlets";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <GlobalContextProvider>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
 
