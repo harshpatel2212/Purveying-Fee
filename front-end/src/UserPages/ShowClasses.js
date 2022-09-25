@@ -7,12 +7,14 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
+import pov from "../images/pov.jpeg";
 
 
 const ShowClasses = () => {
   const { data } = useGlobalContext();
   const [error, setError] = useState(false);
   const [classes, setClasses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     console.log(data);
@@ -29,6 +31,7 @@ const ShowClasses = () => {
           console.log(response.data);
           setClasses(response.data);
           setError(false);
+          setLoading(false);
         } else {
           setError(response.error);
         }
@@ -45,41 +48,56 @@ const ShowClasses = () => {
           padding: "2rem 10rem",
         }}
       >
-      {classes.map((classes) => (
-        <Grid item xs={12}>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardHeader
-              title={classes.description}
-              subheader={classes.tagField}
-            />
-            <CardMedia
-              component="img"
-              height="194"
-              image="images/pov.jpeg"
-              alt="Paella dish"
-            />
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                {classes.ngoName}, {classes.address}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Contact Info: {classes.contactNo}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Start Date: {classes.startDate}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                End Date: {classes.endDate}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Time: {classes.time}
-              </Typography>
-            </CardContent>
-          </Card>
+
+<Grid item xs={12}>
+          <Typography variant="h5" textAlign="center">
+            Classes near you
+          </Typography>
         </Grid>
-      ))}
+
+        {loading && (
+          <Grid item xs={12}>
+            <Typography variant="h6" textAlign="center">
+              Loading...
+            </Typography>
+          </Grid>
+        )}
+
+        {classes.map((classes) => (
+          <Grid item xs={12}>
+            <Card variant="outlined" sx={{ maxWidth: 345 }}>
+              <CardHeader
+                title={classes.description}
+                subheader={classes.tagField}
+              />
+              <CardMedia
+                component="img"
+                height="194"
+                image={pov}
+                alt="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary">
+                  {classes.ngoName}, {classes.address}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Contact Info: {classes.contactNo}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Start Date: {classes.startDate}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  End Date: {classes.endDate}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Time: {classes.time}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
-      </>
+    </>
   );
 };
 
