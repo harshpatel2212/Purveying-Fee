@@ -12,6 +12,8 @@ const GlobalContextProvider = ({ children }) => {
 
   useEffect(() => {
     let ngo = localStorage.getItem("ngo");
+    let city = localStorage.getItem("city");
+    let state = localStorage.getItem("state");
 
     if (ngo) {
       ngo = JSON.parse(ngo);
@@ -20,6 +22,15 @@ const GlobalContextProvider = ({ children }) => {
         ...data,
         authenticated: true,
         ngo: ngo,
+      });
+    }
+
+    if (city && state) {
+      console.log(city, state);
+      setData({
+        ...data,
+        city,
+        state,
       });
     }
   }, []);
