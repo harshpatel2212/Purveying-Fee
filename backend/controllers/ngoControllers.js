@@ -41,21 +41,6 @@ exports.registerfunc = async (req, res) => {
       error: "Passwords are not same",
     });
   }
-
-  Ngo.create(req.body, (err, ngo) => {
-    if (err) {
-      return res.status(500).json({
-        data: {},
-        success: false,
-        error: "Interal server error",
-      });
-    }
-    return res.status(200).json({
-      data: ngo,
-      success: true,
-      error: "",
-    });
-  });
 };
 
 exports.loginfunc = async (req, res) => {
@@ -63,7 +48,7 @@ exports.loginfunc = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const ngo = await Ngo.findOne({ email: email });
-    const isMatch = bcrypt.compare(password, ngo.password);
+    const isMatch = await bcrypt.compare(password, ngo.password);
     if (isMatch) {
       ngo.password = null;
       ngo.confirmPassword = null;

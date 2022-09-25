@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -7,7 +7,8 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
-import pov from "../images/pov.jpeg";
+import pov from "../images/courses.png";
+
 
 const ShowClasses = () => {
   const { data } = useGlobalContext();
@@ -40,15 +41,15 @@ const ShowClasses = () => {
 
   return (
     <>
-      <Grid
+     <Grid
         container
         spacing={5}
         style={{
           padding: "2rem 10rem",
         }}
       >
-        {/* title */}
-        <Grid item xs={12}>
+
+<Grid item xs={12}>
           <Typography variant="h5" textAlign="center">
             Classes near you
           </Typography>

@@ -156,6 +156,7 @@ const CreateOutlet = () => {
           label="Dish Price"
           variant="outlined"
           name="dishPrice"
+          type="number"
           value={data.dishPrice}
           onChange={updateValues}
         />
