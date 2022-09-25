@@ -18,7 +18,7 @@ import { useGlobalContext } from "./context/GlobalContext";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { updateData } = useGlobalContext();
+  const { data: ngoData, updateData } = useGlobalContext();
   const [data, setData] = useState({
     city: "Select",
     state: "Select",
@@ -30,6 +30,12 @@ const Home = () => {
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
+    if (Object.keys(ngoData.ngo) > 0) {
+      navigate("/ngo-dashboard");
+    } else if (ngoData.city) {
+      navigate("/show-outlets");
+    }
+
     fetch(server + "/get_locations", {
       method: "GET",
       headers: {
@@ -82,7 +88,7 @@ const Home = () => {
     localStorage.setItem("state", data.state);
     localStorage.setItem("city", data.city);
     navigate("/show-outlets");
-   // navigate("/show-classes");
+    // navigate("/show-classes");
 
     // localStorage.clear();
   };

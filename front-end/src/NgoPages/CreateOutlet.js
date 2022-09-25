@@ -10,10 +10,12 @@ import {
   Button,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const CreateOutlet = () => {
+  const navigate = useNavigate();
   const { data: ngoData } = useGlobalContext();
   const [data, setData] = useState({
     nameDish: "",
@@ -32,6 +34,9 @@ const CreateOutlet = () => {
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
+    if (ngoData.city) {
+      navigate("/show-outlets");
+    }
     fetch(server + "/get_locations", {
       method: "GET",
       headers: {
@@ -116,7 +121,7 @@ const CreateOutlet = () => {
   };
 
   return (
-    <Grid container spacing={5} style={{ padding: "2rem 10rem", }}>
+    <Grid container spacing={5} style={{ padding: "2rem 10rem" }}>
       <Grid item md={12}>
         <Typography variant="h4" textAlign="center">
           Add your Outlet

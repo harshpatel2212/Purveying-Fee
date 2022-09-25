@@ -16,8 +16,10 @@ import React, { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
 import { TimePicker } from "@mui/x-date-pickers";
+import { useNavigate } from "react-router-dom";
 
 const CreateClass = () => {
+  const navigate = useNavigate();
   const { data: ngoData } = useGlobalContext();
   const [data, setData] = useState({
     name: "",
@@ -39,6 +41,9 @@ const CreateClass = () => {
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
+    if (ngoData.city) {
+      navigate("/show-outlets");
+    }
     fetch(server + "/get_locations", {
       method: "GET",
       headers: {
