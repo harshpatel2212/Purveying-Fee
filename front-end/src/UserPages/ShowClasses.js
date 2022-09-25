@@ -7,23 +7,30 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
-import pov from "../images/pov.jpeg";
+import courses from "../images/courses.png";
+import { useNavigate } from "react-router-dom";
 
 const ShowClasses = () => {
-  const { data } = useGlobalContext();
+  const navigate = useNavigate();
+  const { data: ngoData } = useGlobalContext();
   const [error, setError] = useState(false);
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(data);
-    fetch(server + `/search_classes?city=${data.city}&state=${data.state}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    })
+    if (Object.keys(ngoData.ngo) > 0) {
+      navigate("/ngo-dashboard");
+    }
+    fetch(
+      server + `/search_classes?city=${ngoData.city}&state=${ngoData.state}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((response) => {
         if (response.success) {
@@ -36,7 +43,7 @@ const ShowClasses = () => {
         }
       })
       .catch((error) => console.log(error));
-  }, [data]);
+  }, [ngoData]);
 
   return (
     <>
@@ -47,7 +54,6 @@ const ShowClasses = () => {
           padding: "2rem 10rem",
         }}
       >
-        {/* title */}
         <Grid item xs={12}>
           <Typography variant="h5" textAlign="center">
             Classes near you
@@ -62,34 +68,31 @@ const ShowClasses = () => {
           </Grid>
         )}
 
-        {classes.map((classes) => (
-          <Grid item xs={12}>
+        {classes.map((c) => (
+          <Grid key={c} item xs={12}>
             <Card variant="outlined" sx={{ maxWidth: 345 }}>
-              <CardHeader
-                title={classes.description}
-                subheader={classes.tagField}
-              />
+              <CardHeader title={c.description} subheader={c.tagField} />
               <CardMedia
                 component="img"
                 height="194"
-                image={pov}
+                image={courses}
                 alt="Paella dish"
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                  {classes.ngoName}, {classes.address}
+                  {c.ngoName}, {c.address}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Contact Info: {classes.contactNo}
+                  Contact Info: {c.contactNo}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Start Date: {classes.startDate.split("T")[0]}
+                  Start Date: {c.startDate.split("T")[0]}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  End Date: {classes.endDate.split("T")[0]}
+                  End Date: {c.endDate.split("T")[0]}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Time: {classes.time}
+                  Time: {c.time}
                 </Typography>
               </CardContent>
             </Card>

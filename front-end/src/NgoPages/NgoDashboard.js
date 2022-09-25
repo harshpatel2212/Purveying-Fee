@@ -7,7 +7,8 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
-import pov from "../images/pov.jpeg";
+import courses from "../images/courses.png";
+import thali from "../images/thali.png";
 
 const NgoDashboard = () => {
   const { data } = useGlobalContext();
@@ -78,34 +79,31 @@ const NgoDashboard = () => {
               padding: "2rem 5rem",
             }}
           >
-            {classes.map((classes) => (
+            {classes.map((c) => (
               <Grid item xs={6}>
                 <Card variant="outlined" sx={{ maxWidth: 345 }}>
-                  <CardHeader
-                    title={classes.description}
-                    subheader={classes.tagField}
-                  />
+                  <CardHeader title={c.description} subheader={c.tagField} />
                   <CardMedia
                     component="img"
                     height="194"
-                    image={pov}
+                    image={courses}
                     alt="Paella dish"
                   />
                   <CardContent>
                     <Typography variant="body2" color="text.secondary">
-                      {classes.ngoName}, {classes.address}
+                      {c.ngoName}, {c.address}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Contact Info: {classes.contactNo}
+                      Contact Info: {c.contactNo}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Start Date: {classes.startDate.split("T")[0]}
+                      Start Date: {c.startDate.split("T")[0]}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      End Date: {classes.endDate.split("T")[0]}
+                      End Date: {c.endDate.split("T")[0]}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Time: {classes.time}
+                      Time: {c.time}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -135,7 +133,7 @@ const NgoDashboard = () => {
                   <CardMedia
                     component="img"
                     height="194"
-                    image={pov}
+                    image={thali}
                     alt="Paella dish"
                   />
                   <CardContent>

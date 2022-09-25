@@ -7,23 +7,30 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
-import pov from "../images/pov.jpeg";
+import thali from "../images/thali.png";
+import { useNavigate } from "react-router-dom";
 
 const ShowOutlets = () => {
-  const { data } = useGlobalContext();
+  const navigate = useNavigate();
+  const { data: ngoData } = useGlobalContext();
   const [error, setError] = useState(false);
   const [outlets, setOutlets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(data);
-    fetch(server + `/search_outlet?city=${data.city}&state=${data.state}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    })
+    if (Object.keys(ngoData.ngo) > 0) {
+      navigate("/ngo-dashboard");
+    }
+    fetch(
+      server + `/search_outlet?city=${ngoData.city}&state=${ngoData.state}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((response) => {
         if (response.success) {
@@ -36,7 +43,7 @@ const ShowOutlets = () => {
         }
       })
       .catch((error) => console.log(error));
-  }, [data]);
+  }, [ngoData]);
 
   return (
     <>
@@ -64,12 +71,12 @@ const ShowOutlets = () => {
 
         {/* outlets */}
         {outlets.map((outlet) => (
-          <Grid item md={4}>
+          <Grid key={outlet._id} item md={4}>
             <Card variant="outlined" sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
                 height="194"
-                image={pov}
+                image={thali}
                 alt="Paella dish"
               />
               <CardHeader
