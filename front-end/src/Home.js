@@ -82,7 +82,7 @@ const Home = () => {
     localStorage.setItem("state", data.state);
     localStorage.setItem("city", data.city);
     navigate("/show-outlets");
-    // navigate("/show-classes");
+   // navigate("/show-classes");
 
     // localStorage.clear();
   };

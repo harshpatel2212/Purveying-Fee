@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import { useEffect, useState } from "react";
 import { server } from "../constants";
 import { useGlobalContext } from "../context/GlobalContext";
-import pov from "../images/pov.jpeg";
+import pov from "../images/courses.png";
 
 
 const ShowClasses = () => {
